@@ -13,4 +13,9 @@ ItemSchema.methods.upvote = function (cb) {
     this.save(cb);
 };
 
+ItemSchema.methods.downvote = function (cb) {
+    this.upvotes -= 1;
+    this.save(cb);
+};
+
 mongoose.model('Item', ItemSchema);

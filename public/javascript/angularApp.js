@@ -17,11 +17,11 @@ app.config([
                     }
                 })
                 .state('items', {
-                    url: '/items/{id}',
+                    url: '/items/:id',
                     templateUrl: '/items.html',
                     controller: 'ItemsCtrl',
                     resolve: {
-                        post: ['$stateParams', 'items', function ($stateParams, items) {
+                        item: ['$stateParams', 'items', function ($stateParams, items) {
                                 return items.get($stateParams.id);
                             }]
                     }
@@ -78,6 +78,15 @@ app.factory('items', ['$http', 'auth', function ($http, auth) {
                         item.upvotes += 1;
                     });
         };
+        
+        o.downvote = function(item) {
+            return $http.put('/items/' + item._id + '/downvote', null, {
+                headers: {Authorization: 'Bearer '+auth.getToken()}
+            })
+                    .success(function(data) {
+                        item.upvotes -= 1;
+                    });
+        };
 
         o.get = function (id) {
             return $http.get('/items/' + id).then(function (res) {
@@ -100,6 +109,15 @@ app.factory('items', ['$http', 'auth', function ($http, auth) {
                     });
         };
 
+        o.downvoteComment = function(item, comment) {
+            return $http.put('/items/' + item._id + '/comments/'+ comment._id + '/downvote', null, {
+                headers: {Authorization: 'Bearer '+auth.getToken()}
+            })
+                    .success(function(data){
+                        comment.upvotes -= 1;
+                    });
+        };
+        
         return o;
     }]);
 
@@ -148,7 +166,7 @@ app.factory('auth', ['$http', '$window', function ($http, $window) {
         };
 
         auth.logOut = function () {
-            $window.localStorage.removeItem('flapper-news-token');
+            $window.localStorage.removeItem('the-showcase-token');
         };
 
         return auth;
@@ -174,9 +192,13 @@ app.controller('MainCtrl', [
             $scope.link = '';
         };
 
-        $scope.incrementUpvotes = function (item) {
+        $scope.upvote = function(item) {
             items.upvote(item);
         };
+        
+	$scope.downvote = function(item) {
+            items.downvote(item);
+	};
     }]);
 
 app.controller('ItemsCtrl', [
@@ -201,9 +223,13 @@ app.controller('ItemsCtrl', [
             $scope.body = '';
         };
 
-        $scope.incrementUpvotes = function (comment) {
+        $scope.upvote = function (comment) {
             items.upvoteComment(item, comment);
         };
+
+	$scope.downvote = function(comment) {
+            items.downvoteComment(item, comment);
+	};
     }]);
 
 app.controller('AuthCtrl', [

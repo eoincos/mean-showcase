@@ -30,9 +30,9 @@
             </div>
 
             <div ng-repeat="item in items | orderBy:'-upvotes'">
-                <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(item)"/>
+                <span class="glyphicon glyphicon-thumbs-up" ng-click="upvote(item)"/>
                 {{item.upvotes}}
-                
+                <span class="glyphicon glyphicon-thumbs-down" ng-click="downvote(item)"></span>
                 <span style="font-size:20px; margin-left:10px;">
                     <a ng-show="item.link" href="{{item.link}}">
                         {{item.title}}
@@ -46,6 +46,7 @@
                 </span>
                 <span>
                     <a href="#/items/{{item._id}}">Comments</a>
+                    ({{item.comments.length}})
                 </span>
             </div>
 
@@ -81,8 +82,10 @@
             </div>
             
             <div ng-repeat="comment in item.comments | orderBy:'-upvotes'">
-                <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"/>
-                {{comment.upvotes}} - by {{comment.author}}
+                <span class="glyphicon glyphicon-thumbs-up" ng-click="upvote(comment)"/>
+                {{comment.upvotes}}
+                <span class="glyphicon glyphicon-thumbs-down" ng-click="downvote(comment)"></span>
+                - by {{comment.author}}
         
                 <span style="font-size:20px; margin-left:10px;">
                     {{comment.body}}

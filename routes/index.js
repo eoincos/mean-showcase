@@ -75,6 +75,16 @@ router.put('/items/:item/upvote', auth, function (req, res, next) {
     });
 });
 
+router.put('/items/:item/downvote', auth, function(req, res, next) {
+    req.item.downvote(function(err, item){
+        if (err) {
+            return next(err);
+        }
+
+        res.json(item);
+    });
+});
+
 router.post('/items/:item/comments', auth, function (req, res, next) {
     var comment = new Comment(req.body);
     comment.item = req.item;
@@ -96,8 +106,18 @@ router.post('/items/:item/comments', auth, function (req, res, next) {
     });
 });
 
-router.get('/items/:item/comments/:comment/upvote', auth, function (req, res) {
+router.get('/items/:item/comments/:comment/upvote', auth, function (req, res, next) {
     req.comment.upvote(function (err, comment) {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(comment);
+    });
+});
+
+router.put('/items/:item/comments/:comment/downvote', auth, function(req, res, next) {
+    req.comment.downvote(function(err, comment){
         if (err) {
             return next(err);
         }
