@@ -3,9 +3,9 @@
         <title><%= title %></title>
         <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
 
-        <script src="javascripts/angular.min.js"></script>
-        <script src="javascripts/angular-ui-router.min.js"></script>
-        <script src="javascripts/angularApp.js"></script>
+        <script src="javascript/angular.min.js"></script>
+        <script src="javascript/angular-ui-router.min.js"></script>
+        <script src="javascript/angularApp.js"></script>
         <style> .glyphicon-thumbs-up { cursor:pointer } </style>
     </head>
     <body ng-app="theShowcase">
@@ -17,7 +17,13 @@
                 <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
             </ul>
         </nav>
-
+        
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <ui-view></ui-view>
+            </div>
+        </div>
+        
         <script type="text/ng-template" id="/home.html">
             <div class="page-header">
                 <h1><%= title %></h1>
@@ -34,8 +40,8 @@
                     <span ng-hide="item.link">
                         {{item.title}}
                     </span>
-                    <span ng-show="item.author">
-                        posted by <a>{{item.author}}</a> |
+                    <span ng-show="post.author">
+                        posted by <a>{{post.author}}</a> |
                     </span>
                 </span>
                 <span>

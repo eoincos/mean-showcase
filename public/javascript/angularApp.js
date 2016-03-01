@@ -168,7 +168,7 @@ app.controller('MainCtrl', [
             }
             items.create({
                 title: $scope.title,
-                link: $scope.link,
+                link: $scope.link
             });
             $scope.title = '';
             $scope.link = '';
@@ -194,7 +194,7 @@ app.controller('ItemsCtrl', [
             }
             items.addComment(item._id, {
                 body: $scope.body,
-                author: 'user',
+                author: 'user'
             }).success(function (comment) {
                 $scope.item.comments.push(comment);
             });
