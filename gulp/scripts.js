@@ -11,7 +11,7 @@ gulp.task('js', function () {
                 .pipe(ngAnnotate())
                 .pipe(uglify())
             .pipe(sourcemaps.write())
-            .pipe(gulp.dest('public/javascript'));
+            .pipe(gulp.dest('../public/javascript'));
 });
 
 gulp.task('watch:js', ['js'], function () {
