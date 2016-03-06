@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
-mongoose.connect('mongodb://localhost/showcase');
+var url = process.env.MONGOLAB_URI || 'mongodb://localhost/showcase'
+mongoose.connect(url);
 
 require('./models/Items');
 require('./models/Comments');
