@@ -32,6 +32,22 @@ router.param('item', function (req, res, next, id) {
     });
 });
 
+router.param('comment', function (req, res, next, id) {
+    var query = Comment.findById(id);
+
+    query.exec( function(err, comment) {
+        if (err) {
+            return next(err);
+        }
+        if (!comment) {
+                return ('Could not find comment');
+        }
+
+        req.comment = comment;
+        return next();
+    });
+});
+
 router.get('/items', function (req, res, next) {
     Item.find(function (err, items) {
         if (err) {
@@ -106,7 +122,7 @@ router.post('/items/:item/comments', auth, function (req, res, next) {
     });
 });
 
-router.get('/items/:item/comments/:comment/upvote', auth, function (req, res, next) {
+router.put('/items/:item/comments/:comment/upvote', auth, function (req, res, next) {
     req.comment.upvote(function (err, comment) {
         if (err) {
             return next(err);
