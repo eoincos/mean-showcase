@@ -12,10 +12,13 @@ angular.module('theShowcase').controller('MainCtrl', [
             }
             items.create({
                 title: $scope.title,
-                link: $scope.link
+                link: $scope.link,
+                author: auth.currentUser,
+                image: $scope.image
             });
             $scope.title = '';
             $scope.link = '';
+            $scope.image = '';
         };
 
         $scope.upvote = function(item) {

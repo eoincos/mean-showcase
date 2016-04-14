@@ -13,7 +13,7 @@ angular.module('theShowcase').controller('ItemsCtrl', [
             }
             items.addComment(item._id, {
                 body: $scope.body,
-                author: 'user'
+                author: auth.currentUser
             }).success(function (comment) {
                 $scope.item.comments.push(comment);
             });
