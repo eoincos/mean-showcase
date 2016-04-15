@@ -41,9 +41,9 @@
                         {{item.upvotes}}
                         <a class="glyphicon glyphicon-thumbs-down" ng-show="isLoggedIn()" href="" ng-click="downvote(item)"></a>
                         <a class="glyphicon glyphicon-thumbs-down" ng-hide="isLoggedIn()" href="/#/login"></a>
-                    </div>
+                    </div><!--
                     
-                    <div class="col-xs-10 col-md-10 vcenter">
+                    --><div class="col-xs-10 col-md-10 vcenter">
                         <span ng-show="item.image">
                             <a href="#/items/{{item._id}}">
                                 <img src="{{item.image}}" width="300px"/>
