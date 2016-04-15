@@ -33,7 +33,7 @@
             </div>
 
             <div ng-repeat="item in items | orderBy:'-upvotes'">
-                <div class="col-md-2">
+                <div class="col-md-2" style="vertical-align:middle;">
                     <a class="glyphicon glyphicon-thumbs-up" ng-show="isLoggedIn()" href="" ng-click="upvote(item)"></a>
                     <a class="glyphicon glyphicon-thumbs-up" ng-hide="isLoggedIn()" href="/#/login"></a>
                     {{item.upvotes}}
