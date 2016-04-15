@@ -33,48 +33,50 @@
             </div>
 
             <div ng-repeat="item in items | orderBy:'-upvotes'">
-                <div class="col-md-2" style="vertical-align:middle;">
-                    <a class="glyphicon glyphicon-thumbs-up" ng-show="isLoggedIn()" href="" ng-click="upvote(item)"></a>
-                    <a class="glyphicon glyphicon-thumbs-up" ng-hide="isLoggedIn()" href="/#/login"></a>
-                    {{item.upvotes}}
-                    <a class="glyphicon glyphicon-thumbs-down" ng-show="isLoggedIn()" href="" ng-click="downvote(item)"></a>
-                    <a class="glyphicon glyphicon-thumbs-down" ng-hide="isLoggedIn()" href="/#/login"></a>
-                </div>
-                
-                <div class="col-md-10">
-                    <span ng-show="item.image">
-                        <a href="#/items/{{item._id}}">
-                            <img src="{{item.image}}" width="300px"/>
-                        </a>
-                    </span>
-                    <span ng-hide="item.image">
-                        <a href="#/items/{{item._id}}">
-                            <img src="http://res.cloudinary.com/dq079el2c/image/upload/v1460581908/idea-1296140_1280_jwzf2s.jpg" width="300px"/>
-                        </a>
-                    </span>
+                <div class="row" style="table-layout: fixed;">
+                    <div class="col-xs-2 col-md-2" style="vertical-align:middle;">
+                        <a class="glyphicon glyphicon-thumbs-up" ng-show="isLoggedIn()" href="" ng-click="upvote(item)"></a>
+                        <a class="glyphicon glyphicon-thumbs-up" ng-hide="isLoggedIn()" href="/#/login"></a>
+                        {{item.upvotes}}
+                        <a class="glyphicon glyphicon-thumbs-down" ng-show="isLoggedIn()" href="" ng-click="downvote(item)"></a>
+                        <a class="glyphicon glyphicon-thumbs-down" ng-hide="isLoggedIn()" href="/#/login"></a>
+                    </div>
                     
-                    <br/>
-                    
-                    <span style="font-size:20px; margin-left:10px;">
-                        <a ng-show="item.link" href="{{item.link}}">
-                            {{item.title}}
-                        </a>
-                        <span ng-hide="item.link">
-                            {{item.title}}
+                    <div class="col-xs-10 col-md-10">
+                        <span ng-show="item.image">
+                            <a href="#/items/{{item._id}}">
+                                <img src="{{item.image}}" width="300px"/>
+                            </a>
                         </span>
-                        <span ng-show="post.author">
-                            posted by <a>{{post.author}}</a> |
+                        <span ng-hide="item.image">
+                            <a href="#/items/{{item._id}}">
+                                <img src="http://res.cloudinary.com/dq079el2c/image/upload/v1460581908/idea-1296140_1280_jwzf2s.jpg" width="300px"/>
+                            </a>
                         </span>
-                    </span>
-    
-                    <span ng-show="item.author">
-                    - by {{item.author}}
-                    </span>
-                    
-                    <span>
-                        <a href="#/items/{{item._id}}">Comments</a>
-                        ({{item.comments.length}})
-                    </span>
+                        
+                        <br/>
+                        
+                        <span style="font-size:20px; margin-left:10px;">
+                            <a ng-show="item.link" href="{{item.link}}">
+                                {{item.title}}
+                            </a>
+                            <span ng-hide="item.link">
+                                {{item.title}}
+                            </span>
+                            <span ng-show="post.author">
+                                posted by <a>{{post.author}}</a> |
+                            </span>
+                        </span>
+        
+                        <span ng-show="item.author">
+                        - by {{item.author}}
+                        </span>
+                        
+                        <span>
+                            <a href="#/items/{{item._id}}">Comments</a>
+                            ({{item.comments.length}})
+                        </span>
+                    </div>
                 </div>
             </div>
 
