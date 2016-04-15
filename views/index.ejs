@@ -33,8 +33,8 @@
             </div>
 
             <div ng-repeat="item in items | orderBy:'-upvotes'">
-                <div class="row" style="table-layout: fixed;">
-                    <div class="col-xs-2 col-md-2" style="vertical-align:middle;">
+                <div class="row">
+                    <div class="col-xs-2 col-md-2">
                         <a class="glyphicon glyphicon-thumbs-up" ng-show="isLoggedIn()" href="" ng-click="upvote(item)"></a>
                         <a class="glyphicon glyphicon-thumbs-up" ng-hide="isLoggedIn()" href="/#/login"></a>
                         {{item.upvotes}}
@@ -62,9 +62,6 @@
                             </a>
                             <span ng-hide="item.link">
                                 {{item.title}}
-                            </span>
-                            <span ng-show="post.author">
-                                posted by <a>{{post.author}}</a> |
                             </span>
                         </span>
         
