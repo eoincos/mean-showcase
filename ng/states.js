@@ -1,7 +1,8 @@
 angular.module('theShowcase').config([
     '$stateProvider',
     '$urlRouterProvider',
-    function ($stateProvider, $urlRouterProvider) {
+    '$locationProvider',
+    function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $stateProvider
                 .state('home', {
@@ -47,4 +48,5 @@ angular.module('theShowcase').config([
 
         $urlRouterProvider.otherwise('home');
 
+        $locationProvider.html5Mode(true);
     }]);
