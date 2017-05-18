@@ -10,7 +10,7 @@ A sample project using the MEAN architecture which gives a showcase of items.
 - MongoDB for database.
 - Express for setting up the project.
 - Gulp for automated builds.
-- Netbeans for the IBE.
+- Netbeans for the IDE.
 - Twitter bootstrap for styling.
 - Heroku for online deployment
 - Cloudinary for image hosting
