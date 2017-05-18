@@ -17,14 +17,6 @@ A sample project using the MEAN architecture which gives a showcase of items.
 
 ---
 
-This project was based off the following projects:
-
-- https://thinkster.io/mean-stack-tutorial
-- https://github.com/dickeyxxx/mean-sample
-- https://github.com/alexyoung/dailyjs-cloudinary-gallery
-
----
-
 This project used open source assets from the following domains:
 
 - https://pixabay.com/
